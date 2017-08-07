@@ -880,6 +880,17 @@ void patchCode(u64 progId, u16 progVer, u8 *code, u32 size, u32 textSize, u32 ro
             )) goto error;
     }
 
+    else if(progId == 0x0004013000002F02LL) //SSL
+    {
+        *(u16*)&code[0x6C56] = 0xF03D; // MOVS R0, #0x1B -> BLX code+0x44AA8
+        *(u16*)&code[0x6C58] = 0xEF28; // FE28 // ADDS R7, R4, #7 -> ^ + 1
+
+        *(u32*)&code[0x44AA8] = 0xE3A0001B; // MOV R0, #0x1B
+        *(u32*)&code[0x44AAC] = 0xE2800C02; // ADD R0, #0x200
+        *(u32*)&code[0x44AB0] = 0xE2847007; // ADD R7, R4, #7
+        *(u32*)&code[0x44AB4] = 0xE12FFF1E; // BX LR
+    }
+
     if(CONFIG(PATCHGAMES))
     {
         if(!applyCodeIpsPatch(progId, code, size)) goto error;
