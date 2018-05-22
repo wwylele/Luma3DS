@@ -14,11 +14,10 @@ Since Luma3DS v8.0, Luma3DS has its own in-game menu, triggerable by `L+Down+Sel
 ## Compiling
 
 First you need to clone the repository with: `git clone https://github.com/AuroraWright/Luma3DS.git`  
-To compile, you'll need [armips](https://github.com/Kingcom/armips) and a build of a recent commit of [makerom](https://github.com/profi200/Project_CTR) added to your PATH. You'll also need to install [firmtool](https://github.com/TuxSH/firmtool), its README contains installation instructions.
-You'll also need to update your [libctru](https://github.com/smealum/ctrulib) install, building from the latest commit.  
-Here are [Windows](https://buildbot.orphis.net/armips/) builds of armips (thanks to who compiled them!). For armips on Linux, there is an [AUR](https://aur.archlinux.org/packages/armips-git/) package available.
-Run `make` and everything should work!  
-You can find the compiled files in the `out` folder.
+To compile, you'll need a recent commit of [makerom](https://github.com/profi200/Project_CTR) added to your PATH. You'll also need to install [firmtool](https://github.com/TuxSH/firmtool), its README contains installation instructions.
+You'll also need to update your libctru and devkitARM installation to their latest releases.
+Then, run `make`.
+The produced file is called `boot.firm` and is meant to be copied to the root of your SD card, for usage with boot9strap.
 
 ---
 
@@ -36,5 +35,5 @@ See https://github.com/AuroraWright/Luma3DS/wiki/Credits
 
 ## Licensing
 
-This software is licensed under the terms of the GPLv3.  
+This software is licensed under the terms of the GPLv3.
 You can find a copy of the license in the LICENSE.txt file.
