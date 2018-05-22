@@ -148,7 +148,7 @@ u8 i2cReadRegister(u8 dev_id, u8 reg)
     return ret;
 }
 
-bool i2cWriteRegister(u8 dev_id, u8 reg, u8 data)
+bool i2cWriteRegisterNoWait(u8 dev_id, u8 reg, u8 data)
 {
     u8 bus_id = i2cGetDeviceBusId(dev_id),
        dev_addr = i2cGetDeviceRegAddr(dev_id);
@@ -170,6 +170,12 @@ bool i2cWriteRegister(u8 dev_id, u8 reg, u8 data)
         i2cWaitBusy(bus_id);
     }
 
+    return ret;
+}
+
+bool i2cWriteRegister(u8 dev_id, u8 reg, u8 data)
+{
+    bool ret = i2cWriteRegisterNoWait(dev_id, reg, data);
     wait(3ULL);
 
     return ret;

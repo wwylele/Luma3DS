@@ -47,3 +47,4 @@
 
 u8 i2cReadRegister(u8 dev_id, u8 reg);
 bool i2cWriteRegister(u8 dev_id, u8 reg, u8 data);
+bool i2cWriteRegisterNoWait(u8 dev_id, u8 reg, u8 data);

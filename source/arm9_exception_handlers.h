@@ -24,28 +24,9 @@
 *         reasonable ways as different from the original version.
 */
 
-#pragma once
-
 #include "types.h"
 
-typedef struct __attribute__((packed))
-{
-    u32 magic[2];
-    u16 versionMinor, versionMajor;
-
-    u16 processor, core;
-    u32 type;
-
-    u32 totalSize;
-    u32 registerDumpSize;
-    u32 codeDumpSize;
-    u32 stackDumpSize;
-    u32 additionalDataSize;
-} ExceptionDumpHeader;
-
-void FIQHandler(void);
-void undefinedInstructionHandler(void);
-void dataAbortHandler(void);
-void prefetchAbortHandler(void);
+extern const u32 arm9ExceptionHandlerAddressTable[6];
+extern u32 arm9ExceptionHandlerSvcBreakAddress;
 
 u32 safecpy(void *dst, const void *src, u32 len);
