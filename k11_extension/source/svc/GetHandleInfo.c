@@ -23,9 +23,9 @@
 *         or requiring that modified versions of such material be marked in
 *         reasonable ways as different from the original version.
 */
+#include <string.h>
 
 #include "svc/GetThreadInfo.h"
-#include "memory.h"
 
 Result GetHandleInfoHook(s64 *out, Handle handle, u32 type)
 {
@@ -41,7 +41,7 @@ Result GetHandleInfoHook(s64 *out, Handle handle, u32 type)
         }
         else
             obj = KProcessHandleTable__ToKAutoObject(handleTable, handle);
-        
+
         if(obj == NULL)
             return 0xD8E007F7;
 

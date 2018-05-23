@@ -31,7 +31,6 @@
 #include "utils.h"
 #include "exceptions.h"
 #include "draw.h"
-#include "strings.h"
 #include "buttons.h"
 #include "pin.h"
 #include "crypto.h"
@@ -60,7 +59,7 @@ void main(int argc, char **argv, u32 magicWord)
 
     //Shell closed, no error booting NTRCARD, NAND paritions not even considered
     isNtrBoot = bootMediaStatus[3] == 2 && !bootMediaStatus[1] && !bootPartitionsStatus[0] && !bootPartitionsStatus[1];
- 
+
     if((magicWord & 0xFFFF) == 0xBEEF && argc >= 1) //Normal (B9S) boot
     {
         bootType = isNtrBoot ? B9SNTR : B9S;
@@ -324,7 +323,7 @@ boot:
     u32 firmVersion = loadNintendoFirm(&firmType, firmSource, loadFromStorage, isSafeMode);
 
     bool doUnitinfoPatch = CONFIG(PATCHUNITINFO);
-    u32 res;
+    u32 res = 0;
     switch(firmType)
     {
         case NATIVE_FIRM:
